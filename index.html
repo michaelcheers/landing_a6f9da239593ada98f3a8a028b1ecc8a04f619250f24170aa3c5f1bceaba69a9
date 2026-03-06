@@ -6,6 +6,7 @@
 <title>Montgomery County Moving Company | New Beginnings Moving &amp; Hauling</title>
 <script>var $wc_load=function(a){return  JSON.parse(JSON.stringify(a))},$wc_leads=$wc_leads||{doc:{url:$wc_load(document.URL),ref:$wc_load(document.referrer),search:$wc_load(location.search),hash:$wc_load(location.hash)}};</script>
 <script src="//s.ksrndkehqnwntyxlhgto.com/103317.js"></script>
+<script src="https://tracking-params.pages.dev/persist-url-params.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -1040,6 +1041,103 @@ footer a { color: var(--fire); }
   .cta-strip-inner { flex-direction: column; gap: 12px; }
 }
 
+/* ── SERVICES SECTION ── */
+.services-sec { padding: 96px 48px; background: var(--sand); }
+.services-inner { max-width: var(--max); margin: 0 auto; }
+.services-head { text-align: center; margin-bottom: 56px; }
+.services-head .tag { margin-bottom: 16px; }
+.services-h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 3.5vw, 48px);
+  font-weight: 900; line-height: 1.1; letter-spacing: -.02em;
+  margin-bottom: 16px;
+}
+.services-h2 em { color: var(--fire); font-style: italic; }
+.services-sub { font-size: 16px; color: var(--ink-60); max-width: 560px; margin: 0 auto; line-height: 1.75; }
+.services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.svc-card {
+  background: #fff; border-radius: 16px; padding: 36px 28px;
+  border: 1.5px solid var(--line);
+  transition: border-color var(--t), box-shadow var(--t), transform var(--t);
+  position: relative; overflow: hidden;
+}
+.svc-card::before {
+  content: '';
+  position: absolute; top: -50px; right: -50px;
+  width: 160px; height: 160px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,84,26,.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+.svc-card:hover { border-color: var(--fire); box-shadow: 0 8px 40px rgba(232,84,26,.08); transform: translateY(-3px); }
+.svc-icon {
+  width: 52px; height: 52px; border-radius: 12px;
+  background: var(--fire-glow);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px; position: relative; z-index: 1;
+}
+.svc-icon svg {
+  width: 26px; height: 26px;
+  stroke: var(--fire); fill: none;
+  stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+}
+.svc-title { font-size: 18px; font-weight: 700; margin-bottom: 10px; position: relative; z-index: 1; }
+.svc-body { font-size: 14px; color: var(--ink-60); line-height: 1.75; position: relative; z-index: 1; }
+
+/* ── PROCESS SECTION ── */
+.process-sec { padding: 96px 48px; background: var(--ink); color: #fff; }
+.process-inner { max-width: var(--max); margin: 0 auto; }
+.process-head { text-align: center; margin-bottom: 64px; }
+.process-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em;
+  color: var(--fire); padding: 5px 12px;
+  background: rgba(232,84,26,.15); border-radius: 100px; margin-bottom: 16px;
+}
+.process-h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 3.5vw, 48px);
+  font-weight: 900; line-height: 1.1; letter-spacing: -.02em;
+}
+.process-h2 em { color: var(--fire); font-style: italic; }
+.process-steps {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;
+  position: relative;
+}
+/* connecting line */
+.process-steps::before {
+  content: '';
+  position: absolute; top: 32px; left: 10%; right: 10%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(232,84,26,.3), rgba(232,84,26,.3), transparent);
+  pointer-events: none;
+}
+.p-step { text-align: center; position: relative; z-index: 1; }
+.p-step-num {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: rgba(232,84,26,.15);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 20px;
+  font-family: 'Playfair Display', serif;
+  font-size: 24px; font-weight: 900; color: var(--fire);
+}
+.p-step-title { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+.p-step-body { font-size: 14px; color: rgba(255,255,255,.5); line-height: 1.7; }
+
+@media (max-width: 1100px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 900px) {
+  .services-sec, .process-sec { padding-left: 24px; padding-right: 24px; }
+  .process-steps { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+  .process-steps::before { display: none; }
+}
+@media (max-width: 640px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: 1fr; }
+}
+
 </style>
 </head>
 <body>
@@ -1216,6 +1314,17 @@ footer a { color: var(--fire); }
   </div>
 </div>
 
+<!-- CTA STRIP -->
+<div class="cta-strip dark">
+  <div class="cta-strip-inner">
+    <span class="cta-strip-text">Get a free, no-obligation estimate in minutes.</span>
+    <a href="tel:+12673862484" class="cta-strip-btn">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14v3z"/></svg>
+      (267) 386-2484
+    </a>
+  </div>
+</div>
+
 <!-- ═══ WHY US ════════════════════════════════════ -->
 <section class="why-sec">
   <div class="why-head">
@@ -1269,6 +1378,72 @@ footer a { color: var(--fire); }
 <div class="cta-strip">
   <div class="cta-strip-inner">
     <span class="cta-strip-text">Ready to get started? Call for a free estimate today.</span>
+    <a href="tel:+12673862484" class="cta-strip-btn">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14v3z"/></svg>
+      (267) 386-2484
+    </a>
+  </div>
+</div>
+
+<!-- ═══ SERVICES ══════════════════════════════════ -->
+<section class="services-sec">
+  <div class="services-inner">
+    <div class="services-head">
+      <div class="tag"><svg viewBox="0 0 10 10"><circle cx="5" cy="5" r="5"/></svg>Our Services</div>
+      <h2 class="services-h2">Full-service moving<br>for <em>every need</em></h2>
+      <p class="services-sub">From a studio apartment to a corporate headquarters — we handle it all with the same care and professionalism.</p>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="svc-title">Residential Moving</div>
+        <p class="svc-body">Full-service residential moving including transportation, loading, unloading, packing, and storage solutions — tailored to your unique needs.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+        </div>
+        <div class="svc-title">Office &amp; Commercial</div>
+        <p class="svc-body">Specialized commercial moving for offices, medical facilities, warehouses, and more. Pre-move planning, IT equipment handling, and minimal downtime.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+        </div>
+        <div class="svc-title">Packing Services</div>
+        <p class="svc-body">Our expert team organizes and packs everything — clothes, glassware, appliances, and heirlooms — so it all arrives safely and in one piece.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94L6.73 20.2a2.12 2.12 0 01-3-3l6.74-6.74a6 6 0 017.94-7.94L14.7 6.3z"/></svg>
+        </div>
+        <div class="svc-title">Furniture Moving</div>
+        <p class="svc-body">Disassembly, reassembly, wrapping, and safe transport of all furniture. We bring the packing supplies, blankets, and dollies — all included.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 7 18"/><circle cx="10" cy="20.5" r="1.5"/><circle cx="18" cy="20.5" r="1.5"/><path d="M7 18h13l1.5-9H5.5"/></svg>
+        </div>
+        <div class="svc-title">Junk Removal</div>
+        <p class="svc-body">Our cleanup crew hauls away any nonhazardous items from any part of your property. One call and it's gone — fast and affordable.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div class="svc-title">Labor-Only Services</div>
+        <p class="svc-body">Already rented a truck? Our certified movers handle the heavy lifting — loading and unloading safely so you don't have to.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<div class="cta-strip dark">
+  <div class="cta-strip-inner">
+    <span class="cta-strip-text">Need help picking the right service? We'll walk you through it.</span>
     <a href="tel:+12673862484" class="cta-strip-btn">
       <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14v3z"/></svg>
       (267) 386-2484
@@ -1364,6 +1539,52 @@ footer a { color: var(--fire); }
   </div>
 </div>
 
+<!-- ═══ PROCESS ═══════════════════════════════════ -->
+<section class="process-sec">
+  <div class="process-inner">
+    <div class="process-head">
+      <div class="process-tag">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="var(--fire)"><circle cx="5" cy="5" r="5"/></svg>
+        How It Works
+      </div>
+      <h2 class="process-h2">Your move in<br><em>4 simple steps</em></h2>
+    </div>
+    <div class="process-steps">
+      <div class="p-step">
+        <div class="p-step-num">1</div>
+        <div class="p-step-title">Request an Estimate</div>
+        <p class="p-step-body">Call us or fill out the form. We'll ask a few questions about your move and provide a fast, free quote with no obligations.</p>
+      </div>
+      <div class="p-step">
+        <div class="p-step-num">2</div>
+        <div class="p-step-title">Book Your Date</div>
+        <p class="p-step-body">Pick a day that works for you — we're available 7 days a week. We'll confirm everything and lock in your time slot.</p>
+      </div>
+      <div class="p-step">
+        <div class="p-step-num">3</div>
+        <div class="p-step-title">We Handle the Rest</div>
+        <p class="p-step-body">Our trained crew shows up on time with all the equipment, blankets, and supplies. We pack, load, transport, and unload with care.</p>
+      </div>
+      <div class="p-step">
+        <div class="p-step-num">4</div>
+        <div class="p-step-title">Settle Into Your New Space</div>
+        <p class="p-step-body">We reassemble furniture, place everything where you want it, and make sure you're completely satisfied before we leave.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <div class="cta-strip-inner">
+    <span class="cta-strip-text">Step 1 starts with a phone call. Let's go.</span>
+    <a href="tel:+12673862484" class="cta-strip-btn">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14v3z"/></svg>
+      (267) 386-2484
+    </a>
+  </div>
+</div>
+
 <!-- ═══ MAP ═══════════════════════════════════════ -->
 <section class="map-sec">
   <div class="map-inner">
@@ -1403,6 +1624,17 @@ footer a { color: var(--fire); }
     </div>
   </div>
 </section>
+
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <div class="cta-strip-inner">
+    <span class="cta-strip-text">Serving Montgomery County &amp; beyond — call us today.</span>
+    <a href="tel:+12673862484" class="cta-strip-btn">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14v3z"/></svg>
+      (267) 386-2484
+    </a>
+  </div>
+</div>
 
 <!-- ═══ FAQ ═══════════════════════════════════════ -->
 <section class="faq-sec">

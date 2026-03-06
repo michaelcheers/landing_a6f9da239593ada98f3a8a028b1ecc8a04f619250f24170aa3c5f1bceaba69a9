@@ -1161,7 +1161,7 @@ footer a { color: var(--fire); }
         (267) 386-2484
       </a>
     </div>
-    <button class="btn-nav" onclick="openModal()">Get Free Estimate</button>
+    <button type="button" class="btn-nav" onclick="openModal()">Get Free Estimate</button>
   </div>
 </nav>
 
@@ -1214,7 +1214,7 @@ footer a { color: var(--fire); }
       </div>
 
       <div class="hero-ctas">
-        <button class="btn-fire" onclick="openModal()">
+        <button type="button" class="btn-fire" onclick="openModal()">
           <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 13h4"/></svg>
           Get Free Estimate
         </button>
@@ -1250,7 +1250,7 @@ footer a { color: var(--fire); }
         </div>
       </div>
 
-      <button class="btn-hc-submit" onclick="openModalPrefilled()">
+      <button type="button" class="btn-hc-submit" onclick="openModalPrefilled()">
         <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         See My Estimate
       </button>
@@ -1654,14 +1654,14 @@ footer a { color: var(--fire); }
     <div class="faq-list">
       <!-- 🔧 Customize Q&A per service type -->
       <div class="faq-item">
-        <button class="faq-btn">
+        <button type="button" class="faq-btn">
           How does your pricing work?
           <div class="faq-toggle"><svg viewBox="0 0 14 14"><line x1="7" y1="2" x2="7" y2="12"/><line x1="2" y1="7" x2="12" y2="7"/></svg></div>
         </button>
         <div class="faq-ans">We bill hourly in 15-minute increments — no minimums, no rounding. All equipment, blankets, shrink wrap, and dollies are included in the hourly rate. You only pay for the time we're actively working.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-btn">
+        <button type="button" class="faq-btn">
           What areas do you serve?
           <div class="faq-toggle"><svg viewBox="0 0 14 14"><line x1="7" y1="2" x2="7" y2="12"/><line x1="2" y1="7" x2="12" y2="7"/></svg></div>
         </button>
@@ -1669,14 +1669,14 @@ footer a { color: var(--fire); }
       </div>
       
       <div class="faq-item">
-        <button class="faq-btn">
+        <button type="button" class="faq-btn">
           Are your movers background-checked?
           <div class="faq-toggle"><svg viewBox="0 0 14 14"><line x1="7" y1="2" x2="7" y2="12"/><line x1="2" y1="7" x2="12" y2="7"/></svg></div>
         </button>
         <div class="faq-ans">Absolutely. Every member of our crew is background-checked, trained, and works directly for New Beginnings. We never outsource to temp agencies or day labor.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-btn">
+        <button type="button" class="faq-btn">
           What services do you offer?
           <div class="faq-toggle"><svg viewBox="0 0 14 14"><line x1="7" y1="2" x2="7" y2="12"/><line x1="2" y1="7" x2="12" y2="7"/></svg></div>
         </button>
@@ -1850,7 +1850,7 @@ footer a { color: var(--fire); }
             <input type="text" placeholder="Address or ZIP code" id="m-to"/>
           </div>
         </div>
-        <button class="btn-m-next" onclick="goStep(2)">
+        <button type="button" class="btn-m-next" onclick="goStep(2)">
           Continue
           <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </button>
@@ -1881,11 +1881,11 @@ footer a { color: var(--fire); }
             <textarea placeholder="Stairs, elevator, piano, fragile items, etc." id="m-notes"></textarea>
           </div>
         </div>
-        <button class="btn-m-next" onclick="goStep(3)">
+        <button type="button" class="btn-m-next" onclick="goStep(3)">
           Continue
           <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </button>
-        <button class="btn-m-back" onclick="goStep(1)">← Back</button>
+        <button type="button" class="btn-m-back" onclick="goStep(1)">← Back</button>
       </div>
 
       <!-- STEP 3 -->
@@ -1920,11 +1920,11 @@ footer a { color: var(--fire); }
             <input type="email" placeholder="john@email.com" id="m-email"/>
           </div>
         </div>
-        <button class="btn-m-next" onclick="submitForm()">
+        <button type="button" class="btn-m-next" onclick="submitForm()">
           <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           Get My Free Estimate
         </button>
-        <button class="btn-m-back" onclick="goStep(2)">← Back</button>
+        <button type="button" class="btn-m-back" onclick="goStep(2)">← Back</button>
         <p class="m-disc">We'll never share your information with third parties.</p>
       </div>
     </div>

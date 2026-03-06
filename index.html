@@ -1979,32 +1979,40 @@ function goStep(n){
 }
 
 function submitForm(){
-  var data = {
-    firstName: document.querySelector('#mp-3 .m-row2 .m-field:nth-child(1) input').value,
-    lastName:  document.querySelector('#mp-3 .m-row2 .m-field:nth-child(2) input').value,
-    phone:     document.querySelector('#mp-3 .m-field:nth-of-type(2) input[type=tel]').value,
-    email:     document.querySelector('#mp-3 input[type=email]').value,
-    moveFrom:  document.getElementById('m-from').value,
-    moveTo:    document.getElementById('m-to').value,
-    moveDate:  document.querySelector('#mp-2 input[type=date]').value,
-    moveSize:  document.querySelector('#mp-2 select').value,
-    notes:     document.querySelector('#mp-2 textarea').value
+  var firstName = document.querySelector('#mp-3 .m-row2 .m-field:nth-child(1) input').value;
+  var lastName  = document.querySelector('#mp-3 .m-row2 .m-field:nth-child(2) input').value;
+  var phone     = document.querySelector('#mp-3 .m-field:nth-of-type(2) input[type=tel]').value;
+  var email     = document.querySelector('#mp-3 input[type=email]').value;
+  var moveFrom  = document.getElementById('m-from').value;
+  var moveTo    = document.getElementById('m-to').value;
+  var rawDate   = document.querySelector('#mp-2 input[type=date]').value;
+  var moveDate  = rawDate ? rawDate.replace(/-/g, '') : '';
+
+  var params = new URLSearchParams(window.location.search);
+  var utmCampaign = params.get('utm_campaign') || '';
+  var utmKeyword  = params.get('utm_keyword') || '';
+  var utmMedium   = params.get('utm_medium') || '';
+  var utmSource   = params.get('utm_source') || '';
+
+  var body = {
+    FullName: (firstName + ' ' + lastName).trim(),
+    PhoneNumber: phone,
+    Email: email,
+    MoveDate: moveDate,
+    OriginAddressFull: moveFrom,
+    DestinationAddressFull: moveTo,
+    Medium: utmMedium || 'organic'
   };
+
+  if (utmCampaign) { body.Campaign = utmCampaign; body.UtmCampaign = utmCampaign; }
+  if (utmKeyword)  { body.UtmKeyword = utmKeyword; }
+  if (utmMedium)   { body.UtmMedium = utmMedium; }
+  if (utmSource)   { body.Source = utmSource; body.UtmSource = utmSource; }
 
   fetch('https://api.smartmoving.com/api/leads/from-provider/v2?providerKey=7a0432a8-cc40-4b89-9db1-b3320018ccaa', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      firstName: data.firstName,
-      lastName: data.lastName,
-      phone: data.phone,
-      email: data.email,
-      moveDate: data.moveDate || null,
-      originAddress: data.moveFrom,
-      destinationAddress: data.moveTo,
-      moveSize: data.moveSize,
-      notes: data.notes
-    })
+    body: JSON.stringify(body)
   }).catch(function(){});
 
   document.getElementById('m-progress').style.display = 'none';

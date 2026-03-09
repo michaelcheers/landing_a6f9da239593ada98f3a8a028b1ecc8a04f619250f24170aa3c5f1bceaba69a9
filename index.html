@@ -288,6 +288,28 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   color: var(--ink); background: transparent;
 }
 .hc-input-row input::placeholder { color: var(--ink-30); }
+.hc-input-row select {
+  flex: 1; padding: 0 16px; height: 50px; border: none; outline: none;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px;
+  color: var(--ink-60); background: transparent;
+}
+.hc-input-row select option { background: #fff; }
+.hc-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.hc-row2 .hc-field { min-width: 0; }
+.hc-row2 .hc-input-row { min-width: 0; }
+.hc-row2 .hc-input-row select, .hc-row2 .hc-input-row input { min-width: 0; }
+.hc-textarea { flex-direction: column; align-items: stretch; height: auto; }
+.hc-textarea textarea {
+  padding: 14px 16px; height: 72px; border: none; outline: none; resize: none;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px;
+  color: var(--ink); background: transparent; width: 100%;
+}
+.ff-textarea { flex-direction: column; align-items: stretch; height: auto; }
+.ff-textarea textarea {
+  padding: 14px 16px; height: 72px; border: none; outline: none; resize: none;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px;
+  color: var(--ink); background: transparent; width: 100%;
+}
 
 .btn-hc-submit {
   width: 100%; background: var(--fire); color: #fff;
@@ -814,157 +836,7 @@ footer {
 footer strong { color: rgba(255,255,255,.6); }
 footer a { color: var(--fire); }
 
-/* ──────────────────────────────────────────
-   MODAL
-────────────────────────────────────────── */
-.modal-bg {
-  display: none; position: fixed; inset: 0; z-index: 200;
-  background: rgba(10,18,28,.88); backdrop-filter: blur(8px);
-  align-items: center; justify-content: center;
-  padding: 24px;
-}
-.modal-bg.open { display: flex; }
-.modal {
-  background: #fff; border-radius: 20px;
-  width: 100%; max-width: 560px;
-  overflow: hidden;
-  animation: rise .3s cubic-bezier(.16,1,.3,1);
-  max-height: 90vh; overflow-y: auto;
-}
-@keyframes rise {
-  from { opacity: 0; transform: translateY(32px) scale(.98); }
-  to   { opacity: 1; transform: translateY(0) scale(1); }
-}
-.m-header {
-  background: var(--ink); color: #fff;
-  padding: 28px 32px;
-  display: flex; justify-content: space-between; align-items: flex-start;
-}
-.m-header-left h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 22px; font-weight: 900; margin-bottom: 4px;
-}
-.m-header-left p { font-size: 13px; color: rgba(255,255,255,.5); }
-.m-close {
-  width: 32px; height: 32px; border-radius: 50%;
-  background: rgba(255,255,255,.1); color: #fff;
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer; font-size: 20px; line-height: 1; flex-shrink: 0;
-  transition: background var(--t);
-}
-.m-close:hover { background: rgba(255,255,255,.2); }
-
-/* progress */
-.m-progress { display: flex; background: var(--sand); border-bottom: 1px solid var(--line); }
-.m-step {
-  flex: 1; padding: 14px 16px; text-align: center;
-  font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em;
-  color: var(--ink-30); position: relative;
-  border-right: 1px solid var(--line); transition: color var(--t);
-}
-.m-step:last-child { border-right: none; }
-.m-step.active { color: var(--fire); }
-.m-step.done { color: var(--ink); }
-.m-step::after {
-  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
-  background: transparent; transition: background var(--t);
-}
-.m-step.active::after { background: var(--fire); }
-.m-step.done::after { background: var(--ink); }
-.m-step-n {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 20px; height: 20px; border-radius: 50%;
-  background: var(--line); color: var(--ink-60); font-size: 10px; font-weight: 800;
-  margin-right: 6px; transition: background var(--t), color var(--t);
-}
-.m-step.active .m-step-n { background: var(--fire); color: #fff; }
-.m-step.done .m-step-n { background: var(--ink); color: #fff; }
-
-.m-body { padding: 28px 32px; }
-.m-panel { display: none; }
-.m-panel.active { display: block; }
-
-.m-field { margin-bottom: 16px; }
-.m-field label {
-  display: block; font-size: 11px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .08em;
-  color: var(--ink-60); margin-bottom: 7px;
-}
-.m-inp-row {
-  display: flex; align-items: center;
-  border: 1.5px solid var(--line); border-radius: 10px; overflow: hidden;
-  background: var(--sand); transition: border-color var(--t), background var(--t);
-}
-.m-inp-row:focus-within { border-color: var(--fire); background: #fff; }
-.m-inp-icon {
-  width: 48px; height: 52px;
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-  border-right: 1.5px solid var(--line);
-}
-.m-inp-icon svg {
-  width: 18px; height: 18px;
-  stroke: var(--ink-30); fill: none;
-  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
-}
-.m-inp-row:focus-within .m-inp-icon svg { stroke: var(--fire); }
-.m-inp-row input, .m-inp-row select {
-  flex: 1; padding: 0 16px; height: 52px; border: none; outline: none;
-  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px;
-  color: var(--ink); background: transparent;
-}
-.m-inp-row input::placeholder { color: var(--ink-30); }
-.m-inp-row select { color: var(--ink-60); }
-.m-inp-row select option { background: #fff; }
-.m-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.m-textarea { flex-direction: column; align-items: stretch; height: auto; }
-.m-textarea textarea {
-  padding: 14px 16px; height: 80px; border: none; outline: none; resize: none;
-  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px;
-  color: var(--ink); background: transparent; width: 100%;
-}
-
-.btn-m-next {
-  width: 100%; background: var(--fire); color: #fff;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 16px; font-weight: 700;
-  padding: 17px; border-radius: 10px;
-  display: flex; align-items: center; justify-content: center; gap: 10px;
-  margin-top: 8px;
-  box-shadow: 0 6px 24px rgba(232,84,26,.3);
-  transition: background var(--t), transform var(--t);
-}
-.btn-m-next:hover { background: var(--fire-d); transform: translateY(-1px); }
-.btn-m-next svg { width: 16px; height: 16px; stroke: #fff; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
-.btn-m-back {
-  width: 100%; background: transparent; color: var(--ink-60);
-  font-size: 14px; font-weight: 600;
-  padding: 13px; border: 1.5px solid var(--line); border-radius: 10px;
-  margin-top: 10px; transition: border-color var(--t), color var(--t);
-}
-.btn-m-back:hover { border-color: var(--ink); color: var(--ink); }
-.m-disc { font-size: 11px; color: var(--ink-30); text-align: center; margin-top: 14px; line-height: 1.6; }
-
-/* success */
-.m-success { display: none; text-align: center; padding: 48px 32px; }
-.m-success.active { display: block; }
-.m-success-ring {
-  width: 72px; height: 72px; border-radius: 50%;
-  background: var(--fire-glow); margin: 0 auto 20px;
-  display: flex; align-items: center; justify-content: center;
-}
-.m-success-ring svg { width: 34px; height: 34px; stroke: var(--fire); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.m-success h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 28px; font-weight: 900; margin-bottom: 10px;
-}
-.m-success p { font-size: 15px; color: var(--ink-60); max-width: 340px; margin: 0 auto 28px; line-height: 1.75; }
-.btn-m-call {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: var(--ink); color: #fff;
-  font-size: 18px; font-weight: 700;
-  padding: 16px 32px; border-radius: 10px;
-}
-.btn-m-call svg { width: 18px; height: 18px; stroke: var(--fire); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+/* modal CSS removed — forms are now inline */
 
 /* ──────────────────────────────────────────
    RESPONSIVE
@@ -988,7 +860,6 @@ footer a { color: var(--fire); }
   .ff-outer { padding: 48px 32px; }
   .ff-row { grid-template-columns: 1fr; }
   .ff-field.full { grid-column: auto; }
-  .m-row2 { grid-template-columns: 1fr; }
   footer { flex-direction: column; text-align: center; }
   nav .btn-nav { display: none; }
   .deposit-sec, .why-sec, .reviews-sec, .map-sec, .faq-sec, .footer-form-sec { padding-left: 24px; padding-right: 24px; }
@@ -997,6 +868,7 @@ footer a { color: var(--fire); }
 @media (max-width: 640px) {
   .hero-ctas { flex-direction: column; }
   .hero-h1 { font-size: 40px; }
+  .hc-row2 { grid-template-columns: 1fr; }
   .reviews-grid { grid-template-columns: 1fr; }
   .why-grid { grid-template-columns: 1fr; }
   .why-head, .reviews-head { flex-direction: column; align-items: flex-start; gap: 16px; }
@@ -1040,6 +912,30 @@ footer a { color: var(--fire); }
   .cta-strip { padding: 24px; }
   .cta-strip-inner { flex-direction: column; gap: 12px; }
 }
+
+/* ── INLINE FORM SUCCESS ── */
+.form-success {
+  text-align: center; padding: 32px 16px;
+}
+.form-success-ring {
+  width: 60px; height: 60px; border-radius: 50%;
+  background: var(--fire-glow); margin: 0 auto 16px;
+  display: flex; align-items: center; justify-content: center;
+}
+.form-success-ring svg { width: 28px; height: 28px; stroke: var(--fire); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.form-success h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 900; margin-bottom: 8px;
+}
+.form-success p { font-size: 14px; color: var(--ink-60); max-width: 300px; margin: 0 auto 20px; line-height: 1.7; }
+.form-success .btn-call {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--ink); color: #fff;
+  font-size: 16px; font-weight: 700;
+  padding: 14px 28px; border-radius: 10px;
+  text-decoration: none;
+}
+.form-success .btn-call svg { width: 16px; height: 16px; stroke: var(--fire); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
 /* ── SERVICES SECTION ── */
 .services-sec { padding: 96px 48px; background: var(--sand); }
@@ -1161,7 +1057,7 @@ footer a { color: var(--fire); }
         (267) 386-2484
       </a>
     </div>
-    <button type="button" class="btn-nav" onclick="openModal()">Get Free Estimate</button>
+    <a class="btn-nav" href="#footer-form-card">Get Free Estimate</a>
   </div>
 </nav>
 
@@ -1214,10 +1110,10 @@ footer a { color: var(--fire); }
       </div>
 
       <div class="hero-ctas">
-        <button type="button" class="btn-fire" onclick="openModal()">
+        <a href="#hero-form-card" class="btn-fire">
           <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 13h4"/></svg>
           Get Free Estimate
-        </button>
+        </a>
         <a href="tel:+12673862484" class="btn-ghost-white">
           <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14v3z"/></svg>
           Call Now
@@ -1226,33 +1122,78 @@ footer a { color: var(--fire); }
     </div>
 
     <!-- HERO FORM -->
-    <div class="hero-card">
+    <div class="hero-card" id="hero-form-card">
       <div class="hc-eyebrow">Get Your Free Estimate</div>
       <div class="hc-title">Tell us about your move</div>
 
       <div class="hc-field">
         <label>Moving From</label>
         <div class="hc-input-row">
-          <div class="hc-icon">
-            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          </div>
+          <div class="hc-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
           <input type="text" placeholder="Address or ZIP code" id="h-from">
         </div>
       </div>
-
       <div class="hc-field">
         <label>Moving To</label>
         <div class="hc-input-row">
-          <div class="hc-icon">
-            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          </div>
+          <div class="hc-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
           <input type="text" placeholder="Address or ZIP code" id="h-to">
         </div>
       </div>
+      <div class="hc-field">
+        <label>Full Name</label>
+        <div class="hc-input-row">
+          <div class="hc-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+          <input type="text" placeholder="John Smith" id="h-name">
+        </div>
+      </div>
+      <div class="hc-field">
+        <label>Phone</label>
+        <div class="hc-input-row">
+          <div class="hc-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14v3z"/></svg></div>
+          <input type="tel" placeholder="(267) 000-0000" id="h-phone">
+        </div>
+      </div>
+      <div class="hc-field">
+        <label>Email</label>
+        <div class="hc-input-row">
+          <div class="hc-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <input type="email" placeholder="john@email.com" id="h-email">
+        </div>
+      </div>
+      <div class="hc-row2">
+        <div class="hc-field">
+          <label>Move Date</label>
+          <div class="hc-input-row">
+            <div class="hc-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+            <input type="date" id="h-date">
+          </div>
+        </div>
+        <div class="hc-field">
+          <label>Size of Move</label>
+          <div class="hc-input-row">
+            <div class="hc-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
+            <select id="h-size">
+              <option value="">Select...</option>
+              <option>Studio / 1 Bedroom</option>
+              <option>2–3 Bedrooms</option>
+              <option>4+ Bedrooms</option>
+              <option>Office / Commercial</option>
+              <option>Junk Removal</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="hc-field">
+        <label>Notes (optional)</label>
+        <div class="hc-input-row hc-textarea">
+          <textarea placeholder="Stairs, elevator, piano, fragile items, etc." id="h-notes"></textarea>
+        </div>
+      </div>
 
-      <button type="button" class="btn-hc-submit" onclick="openModalPrefilled()">
+      <button type="button" class="btn-hc-submit" onclick="submitHeroForm()">
         <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        See My Estimate
+        Get My Free Estimate
       </button>
 
       <p class="hc-note">
@@ -1647,7 +1588,7 @@ footer a { color: var(--fire); }
       <div class="faq-head-right">
         Still have questions? We're easy to reach.
         Call us at <a href="tel:+12673862484">(267) 386-2484</a> any time or
-        <a href="#" onclick="openModal();return false;">request a callback</a>
+        <a href="#footer-form-card">request a callback</a>
         and we'll get back to you shortly.
       </div>
     </div>
@@ -1735,7 +1676,7 @@ footer a { color: var(--fire); }
       </div>
     </div>
     <div class="ff-right">
-      <div class="ff-form-card">
+      <div class="ff-form-card" id="footer-form-card">
         <div class="ff-form-title">Get your free estimate</div>
         <div class="ff-form-sub">Takes 60 seconds — we'll follow up shortly</div>
         <div class="ff-row">
@@ -1754,10 +1695,10 @@ footer a { color: var(--fire); }
             </div>
           </div>
           <div class="ff-field">
-            <label>Name</label>
+            <label>Full Name</label>
             <div class="ff-inp-row">
               <div class="ff-inp-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-              <input type="text" placeholder="Your name" id="ff-name"/>
+              <input type="text" placeholder="John Smith" id="ff-name"/>
             </div>
           </div>
           <div class="ff-field">
@@ -1765,6 +1706,13 @@ footer a { color: var(--fire); }
             <div class="ff-inp-row">
               <div class="ff-inp-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14v3z"/></svg></div>
               <input type="tel" placeholder="(267) 000-0000" id="ff-phone"/>
+            </div>
+          </div>
+          <div class="ff-field full">
+            <label>Email</label>
+            <div class="ff-inp-row">
+              <div class="ff-inp-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+              <input type="email" placeholder="john@email.com" id="ff-email"/>
             </div>
           </div>
           <div class="ff-field">
@@ -1789,7 +1737,13 @@ footer a { color: var(--fire); }
             </div>
           </div>
           <div class="ff-field full">
-            <button class="btn-ff" type="button" onclick="openModalFromFooter()">
+            <label>Notes (optional)</label>
+            <div class="ff-inp-row ff-textarea">
+              <textarea placeholder="Stairs, elevator, piano, fragile items, etc." id="ff-notes"></textarea>
+            </div>
+          </div>
+          <div class="ff-field full">
+            <button class="btn-ff" type="button" onclick="submitFooterForm()">
               <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               Get My Free Estimate
             </button>
@@ -1813,227 +1767,9 @@ footer a { color: var(--fire); }
   </div>
 </footer>
 
-<!-- ═══════════════════════════════════════
-     QUOTE MODAL — 3 STEPS
-════════════════════════════════════════ -->
-<div class="modal-bg" id="modal" onclick="handleBgClick(event)">
-  <div class="modal">
-    <div class="m-header">
-      <div class="m-header-left">
-        <h2>Get Your Free Estimate</h2>
-        <p>60 seconds · No obligation · Fast, free, no obligation</p>
-      </div>
-      <div class="m-close" onclick="closeModal()">×</div>
-    </div>
-
-    <div class="m-progress" id="m-progress">
-      <div class="m-step active" id="mtab-1"><span class="m-step-n">1</span>Your Move</div>
-      <div class="m-step" id="mtab-2"><span class="m-step-n">2</span>Details</div>
-      <div class="m-step" id="mtab-3"><span class="m-step-n">3</span>Contact</div>
-    </div>
-
-    <div class="m-body" id="m-body">
-      <!-- STEP 1 -->
-      <div class="m-panel active" id="mp-1">
-        <div class="m-field">
-          <label>Moving From</label>
-          <div class="m-inp-row">
-            <div class="m-inp-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-            <input type="text" placeholder="Address or ZIP code" id="m-from"/>
-          </div>
-        </div>
-        <div class="m-field">
-          <label>Moving To</label>
-          <div class="m-inp-row">
-            <div class="m-inp-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-            <input type="text" placeholder="Address or ZIP code" id="m-to"/>
-          </div>
-        </div>
-        <button type="button" class="btn-m-next" onclick="goStep(2)">
-          Continue
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </button>
-        <p class="m-disc">No spam · No obligation · 100% free</p>
-      </div>
-
-      <!-- STEP 2 -->
-      <div class="m-panel" id="mp-2">
-        <div class="m-row2">
-          <div class="m-field">
-            <label>Move Date</label>
-            <div class="m-inp-row">
-              <div class="m-inp-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-              <input type="date" id="m-date"/>
-            </div>
-          </div>
-          <div class="m-field">
-            <label>Size of Move</label>
-            <div class="m-inp-row">
-              <div class="m-inp-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
-              <select id="m-size"><option value="">Select...</option><option>Studio / 1 BR</option><option>2–3 Bedrooms</option><option>4+ Bedrooms</option><option>Office / Commercial</option><option>Junk Removal</option></select>
-            </div>
-          </div>
-        </div>
-        <div class="m-field" id="m-notes-field">
-          <label>Notes (optional)</label>
-          <div class="m-inp-row m-textarea">
-            <textarea placeholder="Stairs, elevator, piano, fragile items, etc." id="m-notes"></textarea>
-          </div>
-        </div>
-        <button type="button" class="btn-m-next" onclick="goStep(3)">
-          Continue
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </button>
-        <button type="button" class="btn-m-back" onclick="goStep(1)">← Back</button>
-      </div>
-
-      <!-- STEP 3 -->
-      <div class="m-panel" id="mp-3">
-        <div class="m-row2">
-          <div class="m-field">
-            <label>First Name</label>
-            <div class="m-inp-row">
-              <div class="m-inp-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-              <input type="text" placeholder="John" id="m-fname"/>
-            </div>
-          </div>
-          <div class="m-field">
-            <label>Last Name</label>
-            <div class="m-inp-row">
-              <div class="m-inp-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-              <input type="text" placeholder="Smith" id="m-lname"/>
-            </div>
-          </div>
-        </div>
-        <div class="m-field">
-          <label>Phone Number</label>
-          <div class="m-inp-row">
-            <div class="m-inp-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14v3z"/></svg></div>
-            <input type="tel" placeholder="(267) 000-0000" id="m-phone"/>
-          </div>
-        </div>
-        <div class="m-field">
-          <label>Email Address</label>
-          <div class="m-inp-row">
-            <div class="m-inp-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-            <input type="email" placeholder="john@email.com" id="m-email"/>
-          </div>
-        </div>
-        <button type="button" class="btn-m-next" onclick="submitForm()">
-          <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          Get My Free Estimate
-        </button>
-        <button type="button" class="btn-m-back" onclick="goStep(2)">← Back</button>
-        <p class="m-disc">We'll never share your information with third parties.</p>
-      </div>
-    </div>
-
-    <!-- SUCCESS -->
-    <div class="m-success" id="m-success">
-      <div class="m-success-ring">
-        <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-      </div>
-      <h3>You're all set!</h3>
-      <p>We received your request and will follow up shortly with your personalized estimate.</p>
-      <a href="tel:+12673862484" class="btn-m-call">
-        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14v3z"/></svg>
-        (267) 386-2484
-      </a>
-    </div>
-  </div>
-</div>
-
 <script>
-// ── MODAL ─────────────────────────────────────────────────
-function openModal(){
-  document.getElementById('modal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function resetNotesPosition(){
-  var notesField = document.getElementById('m-notes-field');
-  var step2 = document.getElementById('mp-2');
-  var step2Btn = step2.querySelector('.btn-m-next');
-  if (notesField.parentNode !== step2) {
-    step2.insertBefore(notesField, step2Btn);
-  }
-}
-function openModalPrefilled(){
-  resetNotesPosition();
-  var from = document.getElementById('h-from').value;
-  var to   = document.getElementById('h-to').value;
-  if (from) document.getElementById('m-from').value = from;
-  if (to)   document.getElementById('m-to').value   = to;
-  if (from && to) { openModal(); goStep(2); } else { openModal(); }
-}
-function openModalFromFooter(){
-  var from  = document.getElementById('ff-from').value;
-  var to    = document.getElementById('ff-to').value;
-  var name  = document.getElementById('ff-name').value;
-  var phone = document.getElementById('ff-phone').value;
-  var date  = document.getElementById('ff-date').value;
-  var size  = document.getElementById('ff-size').value;
-
-  if (from) document.getElementById('m-from').value = from;
-  if (to)   document.getElementById('m-to').value   = to;
-  if (date) document.getElementById('m-date').value = date;
-  if (size) document.getElementById('m-size').value = size;
-
-  // Split name into first/last
-  if (name) {
-    var parts = name.trim().split(/\s+/);
-    document.getElementById('m-fname').value = parts[0] || '';
-    document.getElementById('m-lname').value = parts.slice(1).join(' ') || '';
-  }
-  if (phone) document.getElementById('m-phone').value = phone;
-
-  // If date+size filled, move notes to step 3 and skip there
-  if (date && size) {
-    var notesField = document.getElementById('m-notes-field');
-    var step3 = document.getElementById('mp-3');
-    var step3Btn = step3.querySelector('.btn-m-next');
-    step3.insertBefore(notesField, step3Btn);
-    openModal(); goStep(3);
-  } else if (from && to) {
-    resetNotesPosition();
-    openModal(); goStep(2);
-  } else {
-    resetNotesPosition();
-    openModal();
-  }
-}
-function closeModal(){
-  document.getElementById('modal').classList.remove('open');
-  document.body.style.overflow = '';
-}
-function handleBgClick(e){
-  if (e.target === document.getElementById('modal')) closeModal();
-}
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-// ── STEPS ─────────────────────────────────────────────────
-function goStep(n){
-  [1,2,3].forEach(i => {
-    document.getElementById('mp-' + i).classList.toggle('active', i === n);
-    const tab = document.getElementById('mtab-' + i);
-    tab.classList.remove('active', 'done');
-    if (i === n) tab.classList.add('active');
-    else if (i < n) tab.classList.add('done');
-  });
-  document.querySelector('.modal').scrollTop = 0;
-}
-
-function submitForm(){
-  var firstName = document.getElementById('m-fname').value;
-  var lastName  = document.getElementById('m-lname').value;
-  var phone     = document.getElementById('m-phone').value;
-  var email     = document.getElementById('m-email').value;
-  var moveFrom  = document.getElementById('m-from').value;
-  var moveTo    = document.getElementById('m-to').value;
-  var rawDate   = document.getElementById('m-date').value;
-  var moveDate  = rawDate ? rawDate.replace(/-/g, '') : '';
-  var moveSize  = document.getElementById('m-size').value;
-  var notes     = document.getElementById('m-notes').value;
-
+// ── SHARED API SUBMIT ─────────────────────────────────────
+function submitToSmartMoving(data, formEl) {
   var params = new URLSearchParams(window.location.search);
   var utmCampaign = params.get('utm_campaign') || '';
   var utmKeyword  = params.get('utm_keyword') || '';
@@ -2041,14 +1777,14 @@ function submitForm(){
   var utmSource   = params.get('utm_source') || '';
 
   var body = {
-    FullName: (firstName + ' ' + lastName).trim(),
-    PhoneNumber: phone,
-    Email: email,
-    MoveDate: moveDate,
-    OriginAddressFull: moveFrom,
-    DestinationAddressFull: moveTo,
-    MoveSize: moveSize,
-    Notes: notes,
+    FullName: data.name || '',
+    PhoneNumber: data.phone || '',
+    Email: data.email || '',
+    MoveDate: data.date ? data.date.replace(/-/g, '') : '',
+    OriginAddressFull: data.from || '',
+    DestinationAddressFull: data.to || '',
+    MoveSize: data.size || '',
+    Notes: data.notes || '',
     Medium: utmMedium || 'organic'
   };
 
@@ -2063,9 +1799,44 @@ function submitForm(){
     body: JSON.stringify(body)
   }).catch(function(){});
 
-  document.getElementById('m-progress').style.display = 'none';
-  document.getElementById('m-body').style.display     = 'none';
-  document.getElementById('m-success').classList.add('active');
+  // Show inline success
+  var successHTML = '<div class="form-success">' +
+    '<div class="form-success-ring"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>' +
+    '<h3>You\'re all set!</h3>' +
+    '<p>We received your request and will follow up shortly with your personalized estimate.</p>' +
+    '<a href="tel:+12673862484" class="btn-call"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14v3z"/></svg>(267) 386-2484</a>' +
+    '</div>';
+  formEl.innerHTML = successHTML;
+}
+
+// ── HERO FORM ─────────────────────────────────────────────
+function submitHeroForm() {
+  var card = document.getElementById('hero-form-card');
+  submitToSmartMoving({
+    from:  document.getElementById('h-from').value,
+    to:    document.getElementById('h-to').value,
+    name:  document.getElementById('h-name').value,
+    phone: document.getElementById('h-phone').value,
+    email: document.getElementById('h-email').value,
+    date:  document.getElementById('h-date').value,
+    size:  document.getElementById('h-size').value,
+    notes: document.getElementById('h-notes').value
+  }, card);
+}
+
+// ── FOOTER FORM ───────────────────────────────────────────
+function submitFooterForm() {
+  var card = document.getElementById('footer-form-card');
+  submitToSmartMoving({
+    from:  document.getElementById('ff-from').value,
+    to:    document.getElementById('ff-to').value,
+    name:  document.getElementById('ff-name').value,
+    phone: document.getElementById('ff-phone').value,
+    email: document.getElementById('ff-email').value,
+    date:  document.getElementById('ff-date').value,
+    size:  document.getElementById('ff-size').value,
+    notes: document.getElementById('ff-notes').value
+  }, card);
 }
 
 // ── FAQ accordion ──

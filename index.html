@@ -845,7 +845,7 @@ footer a { color: var(--fire); }
 ────────────────────────────────────────── */
 @media (max-width: 1100px) {
   .why-grid { grid-template-columns: repeat(2, 1fr); }
-  .ff-outer { grid-template-columns: 1fr; gap: 48px; padding: 56px 48px; }
+  .ff-outer { grid-template-columns: minmax(0, 1fr); gap: 48px; padding: 56px 48px; }
   .map-layout { grid-template-columns: 1fr; }
   .map-sidebar { flex-direction: row; flex-wrap: wrap; }
   .map-city { flex: 0 0 auto; }

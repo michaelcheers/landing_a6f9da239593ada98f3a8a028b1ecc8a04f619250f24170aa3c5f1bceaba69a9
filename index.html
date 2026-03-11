@@ -841,6 +841,31 @@ footer a { color: var(--fire); }
 /* modal CSS removed — forms are now inline */
 
 /* ──────────────────────────────────────────
+   VIDEO TESTIMONIAL
+────────────────────────────────────────── */
+.video-test-sec { padding: 80px 48px; background: var(--sand); }
+.video-test-inner {
+  max-width: 800px; margin: 0 auto; text-align: center;
+}
+.video-test-inner .tag { margin-bottom: 14px; }
+.video-test-h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 900; line-height: 1.15; letter-spacing: -.02em;
+  margin-bottom: 40px;
+}
+.video-test-h2 em { color: var(--fire); font-style: italic; }
+.video-wrap {
+  position: relative; border-radius: 16px; overflow: hidden;
+  border: 1.5px solid var(--line);
+  box-shadow: 0 12px 48px rgba(0,0,0,.08);
+  background: #000;
+}
+.video-wrap video {
+  width: 100%; display: block; border-radius: 16px;
+}
+
+/* ──────────────────────────────────────────
    RESPONSIVE
 ────────────────────────────────────────── */
 @media (max-width: 1100px) {
@@ -866,7 +891,7 @@ footer a { color: var(--fire); }
   .topbar { display: none; }
   .nav { top: 0; }
   nav .btn-nav { display: none; }
-  .deposit-sec, .why-sec, .reviews-sec, .map-sec, .faq-sec, .footer-form-sec { padding-left: 24px; padding-right: 24px; }
+  .deposit-sec, .why-sec, .reviews-sec, .video-test-sec, .map-sec, .faq-sec, .footer-form-sec { padding-left: 24px; padding-right: 24px; }
   .proof-strip-inner { padding: 0 24px; overflow-x: auto; }
 }
 @media (max-width: 640px) {
@@ -1473,6 +1498,20 @@ footer a { color: var(--fire); }
           <div class="rev-meta">Local Move · Google Review</div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ VIDEO TESTIMONIAL ═══════════════════════════ -->
+<section class="video-test-sec">
+  <div class="video-test-inner">
+    <div class="tag"><svg viewBox="0 0 10 10"><circle cx="5" cy="5" r="5"/></svg>Testimonial</div>
+    <h2 class="video-test-h2">Hear it <em>firsthand</em></h2>
+    <div class="video-wrap">
+      <video controls preload="metadata" playsinline>
+        <source src="testimonial.webm" type="video/webm">
+        Your browser does not support the video tag.
+      </video>
     </div>
   </div>
 </section>
